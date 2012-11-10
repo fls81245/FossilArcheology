@@ -800,6 +800,25 @@ public class EntityPterosaur extends EntityDinosaurce{
 		}
 		
 	}
+	@Override
+	public String[] additionalPediaMessage(){
+		String[] result=null;
+		if (!this.isTamed()){
+			result=new String[1];
+			result[0]=UntamedText;
+		}else{
+			ArrayList<String> resultList=new ArrayList<String>();
+			if (this.getDinoAge()>=5)
+				resultList.add(FlyText);
+			if (this.getDinoAge()>=8)
+				resultList.add(RidiableText);
+			if (!resultList.isEmpty()) {
+				result=new String[1];
+				result=resultList.toArray(result);
+			}
+		}
+		return result;
+	}
 	/*public void HandleBreed(){
 		if (this.age>3){
 			this.BreedTick--;

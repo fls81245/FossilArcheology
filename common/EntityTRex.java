@@ -765,6 +765,24 @@ public class EntityTRex extends EntityDinosaurce{
 			}
 			
 		}
+		@Override
+		public String[] additionalPediaMessage(){
+			String[] result=null;
+			if (!this.isTamed()){
+				result=new String[1];
+				result[0]=UntamedText;
+			}else{
+				ArrayList<String> resultList=new ArrayList<String>();
+				if (this.getDinoAge()>=4 && this.isTamed())
+					resultList.add(RidiableText);
+				if (!this.isWeak() && !this.isTamed()) resultList.add(CautionText);
+				if (!resultList.isEmpty()) {
+					result=new String[1];
+					result=resultList.toArray(result);
+				}
+			}
+			return result;
+		}
 		public void SetOrder(EnumOrderType input){
 			this.OrderStatus=input;
 		}

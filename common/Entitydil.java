@@ -892,6 +892,23 @@ public class Entitydil extends EntityDinosaurce{
 		}
 		
 	}
+	@Override
+	public String[] additionalPediaMessage(){
+		String[] result=null;
+		if (!this.isTamed()){
+			result=new String[1];
+			result[0]=UntamedText;
+		}else{
+			ArrayList<String> resultList=new ArrayList<String>();
+			if (this.LearningChestTick<=0)
+				resultList.add(EnableChestText);
+			if (!resultList.isEmpty()) {
+				result=new String[1];
+				result=resultList.toArray(result);
+			}
+		}
+		return result;
+	}
 	/*@Override
 	public void HandleBreed(){
 		if (this.age>3){

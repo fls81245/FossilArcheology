@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -128,7 +129,23 @@ public class EntityBrachiosaurus extends EntityDinosaurce  {
 			mod_Fossil.ShowMessage(UntamedText,checker);
 		}
 	}
-
+	@Override
+	public String[] additionalPediaMessage(){
+		String[] result=null;
+		if (!this.isTamed()){
+			result=new String[1];
+			result[0]=UntamedText;
+		}else{
+			ArrayList<String> resultList=new ArrayList<String>();
+			if ((this.isTamed() && this.getDinoAge() > 4 && riddenByEntity == null))
+				resultList.add(RidiableText);
+			if (!resultList.isEmpty()) {
+				result=new String[1];
+				result=resultList.toArray(result);
+			}
+		}
+		return result;
+	}
 	
 
 

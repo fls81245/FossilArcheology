@@ -899,6 +899,23 @@ public class EntityPlesiosaur extends EntityDinosaurce implements IWaterDino{
 			}
 			
 		}
+		@Override
+		public String[] additionalPediaMessage(){
+			String[] result=null;
+			if (!this.isTamed()){
+				result=new String[1];
+				result[0]=UntamedText;
+			}else{
+				ArrayList<String> resultList=new ArrayList<String>();
+				if ((this.isTamed() && this.getDinoAge() > 4 && riddenByEntity == null))
+					resultList.add(RidiableText);
+				if (!resultList.isEmpty()) {
+					result=new String[1];
+					result=resultList.toArray(result);
+				}
+			}
+			return result;
+		}
 		/*public void HandleBreed(){
 			if (this.age>4){
 				this.BreedTick--;

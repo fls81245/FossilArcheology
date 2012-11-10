@@ -772,6 +772,15 @@ public class EntityStegosaurus extends EntityDinosaurce{
 			}
 			
 		}
+		@Override
+		public String[] additionalPediaMessage(){
+			String[] result=null;
+			if (!this.isTamed()){
+				result=new String[1];
+				result[0]=UntamedText;
+			}
+			return result;
+		}
 		/*public void HandleBreed(){
 			if (this.age>4){
 				this.BreedTick--;

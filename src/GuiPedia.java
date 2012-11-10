@@ -38,6 +38,11 @@ public class GuiPedia extends GuiContainer
         this.fontRenderer.drawString(new StringBuilder().append(this.dino.getDinoAge()).append("days").toString(), 110, 31, 4210752);
         this.fontRenderer.drawString(new StringBuilder().append(this.dino.getHealth()).append('/').append(this.dino.getMaxHealth()).toString(), 110, 47, 4210752);
         this.fontRenderer.drawString(new StringBuilder().append(this.dino.getHunger()).append('/').append(this.dino.getHungerLimit()).toString(), 110, 62, 4210752);
+        String[] additional=this.dino.additionalPediaMessage();
+        if (additional==null) return;
+        for (int i=0;i<additional.length && i<=6;i++){
+        	this.fontRenderer.drawString(additional[i],104,80+(this.fontRenderer.FONT_HEIGHT*i),4210752);
+        }
     }
 
     /**

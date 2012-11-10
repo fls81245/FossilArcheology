@@ -513,4 +513,7 @@ public abstract class EntityDinosaurce extends EntityTameable implements IEntity
 	public float getGLZ(){
 		return this.getGLX();
 	}
+	public String[] additionalPediaMessage(){
+		return null;
+	}
 }

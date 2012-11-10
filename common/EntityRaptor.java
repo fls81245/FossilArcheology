@@ -824,7 +824,23 @@ public class EntityRaptor extends EntityDinosaurce implements IHighIntellegent {
 		}
 
 	}
-
+	@Override
+	public String[] additionalPediaMessage(){
+		String[] result=null;
+		if (!this.isTamed()){
+			result=new String[1];
+			result[0]=UntamedText;
+		}else{
+			ArrayList<String> resultList=new ArrayList<String>();
+			if (this.isLeartChest())
+				resultList.add(EnableChestText);
+			if (!resultList.isEmpty()) {
+				result=new String[1];
+				result=resultList.toArray(result);
+			}
+		}
+		return result;
+	}
 	/*
 	 * public void HandleBreed(){ if (this.age>3){ this.BreedTick--; if
 	 * (this.BreedTick==0){ int GroupAmount=0; List list =
